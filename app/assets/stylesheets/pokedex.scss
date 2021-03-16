@@ -1,4 +1,4 @@
-// container of both pokemon name and ID, set to flex so that they are lined up
+// container of both pokemon name and ID, set to inline-flex so that they are lined up and so that text-align works
 .name_ID {
     display: inline-flex;
     border: 1px solid black;
@@ -9,7 +9,7 @@
 .poke_name {
     padding-right: 20px;
 }
-// id of the pokemon, lined up with name due to name_ID display being 'flex'
+// id of the pokemon, lined up with name due to name_ID display being 'inline-flex'
 .poke_id {
     padding-left: 20px;
 }
@@ -19,6 +19,7 @@
         position: relative;
     }
     background-color: grey;
+    /* this aligned the pokemon name and ID above the image */
     text-align: center;
     /* should center container */
     position: absolute;
