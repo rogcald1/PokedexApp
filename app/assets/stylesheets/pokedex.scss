@@ -1,3 +1,28 @@
-// Place all the styles related to the Pokedex controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// container of both pokemon name and ID, set to flex so that they are lined up
+.name_ID {
+    display: inline-flex;
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+// name of the pokemon
+.poke_name {
+    padding-right: 20px;
+}
+// id of the pokemon, lined up with name due to name_ID display being 'flex'
+.poke_id {
+    padding-left: 20px;
+}
+// pokedex_results_container is the master container, results_container is smaller and a child of it
+.results_container {
+    .pokedex_results_container {
+        position: relative;
+    }
+    background-color: grey;
+    text-align: center;
+    /* should center container */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
