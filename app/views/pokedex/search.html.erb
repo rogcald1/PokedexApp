@@ -8,7 +8,30 @@
     </div>
 
     <div class='photo_screen'>
-      <%= image_tag("sprites/official-artwork/#{@pokemon_id}.png") %>
+      <%= image_tag("sprites/official-artwork/#{@pokemon_id}.png", :class => "poke_img") %>
+    </div>
+
+    <div class='poke_stats'>
+      <div class='poke_description'>
+        <%= @pokemon_desc %>
+      </div>
+
+      <div class='poke_four'>
+        <span class='height'> Height:
+        <br/> 
+        <%= @ft %>' <%= @inches %>''
+        </span>
+        <span class='abilities'> Abilities:
+        <br/> <%= @abilities.join(', ') %>
+        </span>
+        <span class='weight'> Weight:
+        <br/> pp
+        </span>
+        <span class='genus'> Genus:
+        <br/> pp
+        </span>
+      </div>
+
     </div>
 
   </div>

@@ -1,7 +1,6 @@
 // container of both pokemon name and ID, set to inline-flex so that they are lined up and so that text-align works
 .name_ID {
     display: inline-flex;
-    border: 1px solid black;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -18,7 +17,25 @@
     .pokedex_results_container {
         position: relative;
     }
-    background-color: grey;
+    .poke_img {
+        width: 50%;
+    }
+    .poke_four {
+        height: 8em;
+        position: relative;
+    }
+    span {
+        width: 50%;
+        height: 50%;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .poke_description {
+        margin: 0 1em 1em 1em;
+    }
+    border: 1px solid;
     /* this aligned the pokemon name and ID above the image */
     text-align: center;
     /* should center container */
