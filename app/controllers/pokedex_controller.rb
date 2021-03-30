@@ -16,6 +16,8 @@ class PokedexController < ApplicationController
     ##if initial test passes, then use PokeApi and grab info
       pokemons = find_pokemon(params[:pokemon].downcase) 
       species = pokemons.species.get
+      evo = species.evolution_chain.get.chain 
+
     end
 
     @pokemon_desc = ''
@@ -36,6 +38,37 @@ class PokedexController < ApplicationController
     pokemons.abilities.each {|k|
       @abilities << k.ability.name.gsub('-',' ').split.map(&:capitalize).join(' ')
     }
+    @weight = weight_converter(pokemons.weight)
+
+    @poke_types = []
+
+    pokemons.types.each {|k|
+      @poke_types << k.type.name.capitalize
+    }
+
+    @poke_category = ''
+
+    species.genera.each {|k|
+      @poke_category = k.genus if k.language.name == 'en'
+    }
+
+    link = evo
+    name = link.species.name.capitalize
+    @names = [name]
+
+    while !link.evolves_to.first.nil?
+      if link.evolves_to.length > 1
+        link.evolves_to.each {|k|
+          @names << k.species.name.capitalize
+        }
+        link = link.evolves_to.first
+      else
+        link = link.evolves_to.first
+        name = link.species.name.capitalize
+        @names << name
+      end
+    end
+
   end
 
   def find_pokemon(pokemon_choice)
@@ -48,6 +81,11 @@ class PokedexController < ApplicationController
     second_conv = first_conv.to_s.split('.')
     final << second_conv[0]
     final << second_conv[1][0..1]
+    final
+  end
+
+  def weight_converter(weight)
+    final = (weight / 4.536).round(1)
     final
   end
 end

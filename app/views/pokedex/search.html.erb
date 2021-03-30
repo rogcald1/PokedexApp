@@ -16,20 +16,37 @@
         <%= @pokemon_desc %>
       </div>
 
+      <div class='poke_category'>
+        <p> Category:
+        <br>
+        <%= @poke_category %>
+        </p>
+      </div>
+
       <div class='poke_four'>
         <span class='height'> Height:
         <br/> 
         <%= @ft %>' <%= @inches %>''
         </span>
         <span class='abilities'> Abilities:
-        <br/> <%= @abilities.join(', ') %>
+        <br/> 
+        <%= @abilities.join(', ') %>
         </span>
         <span class='weight'> Weight:
-        <br/> pp
+        <br/> 
+        <%= @weight %> lbs
         </span>
-        <span class='genus'> Genus:
-        <br/> pp
+        <span class='genus'> Type:
+        <br/> 
+        <%= @poke_types.join(', ') %>
         </span>
+      </div>
+
+      <div class='evo_chain'>
+        <p> Evolutions:
+        <br>
+        <%= @names.join(', ') %>
+        </p>
       </div>
 
     </div>
