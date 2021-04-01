@@ -5,7 +5,10 @@ class PokedexController < ApplicationController
   end
 
   def search
-
+    if params[:pokemon] == ''
+      flash[:alert] = "please input a pokemon's name or ID"
+      return render action: :index
+    end
     ##initial test for errors, since PokeApi automatically converts info into JSON
     test_res = Excon.get("https://pokeapi.co/api/v2/pokemon/#{params[:pokemon].downcase}")
 

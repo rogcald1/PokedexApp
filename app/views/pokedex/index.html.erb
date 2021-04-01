@@ -1,9 +1,3 @@
-<div class="error-alert">
-      <% if flash[:alert] %>
-        <div class="alert-warning"><%= flash[:alert] %></div>
-      <% end %>
-</div>
-
 <div class="search-container">
   <div class='logo-wrapper'>
     <%= image_tag asset_path('poke_logo.png'), :class => 'poke_logo' %>
@@ -15,6 +9,13 @@
           <div class="form-group">
             <%= label_tag :pokemon, 'Search by name or ID ', :class => 'search_label' %>
             <br/>
+
+            <div class="error-alert">
+                <% if flash[:alert] %>
+                  <div class="alert-warning"><%= flash[:alert] %></div>
+                <% end %>
+            </div>
+
             <%= text_field_tag :pokemon, nil, placeholder: 'Eg. Squirtle or 7', class: 'form-control', id: 'poke_input' %>
           </div>
 

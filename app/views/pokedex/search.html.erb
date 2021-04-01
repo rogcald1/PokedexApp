@@ -16,39 +16,44 @@
         <%= @pokemon_desc %>
       </div>
 
-      <div class='poke_category'>
-        <p> Category:
-        <br>
-        <%= @poke_category %>
-        </p>
-      </div>
+      <div class='sub_stat'>
+        <div class='poke_category'>
+          <p> Category:
+          <br>
+          <%= @poke_category %>
+          </p>
+        </div>
 
-      <div class='poke_four'>
-        <span class='height'> Height:
-        <br/> 
-        <%= @ft %>' <%= @inches %>''
-        </span>
-        <span class='abilities'> Abilities:
-        <br/> 
-        <%= @abilities.join(', ') %>
-        </span>
-        <span class='weight'> Weight:
-        <br/> 
-        <%= @weight %> lbs
-        </span>
-        <span class='genus'> Type:
-        <br/> 
-        <%= @poke_types.join(', ') %>
-        </span>
-      </div>
+        <div class='poke_four'>
+          <span class='height'> Height:
+          <br/> 
+          <%= @ft %>' <%= @inches %>''
+          </span>
+          <span class='abilities'> Abilities:
+          <br/> 
+          <%= @abilities.join(', ') %>
+          </span>
+          <span class='weight'> Weight:
+          <br/> 
+          <%= @weight %> lbs
+          </span>
+          <span class='genus'> Type:
+          <br/> 
+          <%= @poke_types.join(', ') %>
+          </span>
+        </div>
 
-      <div class='evo_chain'>
-        <p> Evolutions:
-        <br>
-        <%= @names.join(', ') %>
-        </p>
+        <div class='evo_chain'>
+          <p> Evolutions:
+          <br>
+          <%= @names.join(', ') %>
+          </p>
+        </div>
       </div>
+    </div>
 
+    <div class='index_link'>
+      <%= link_to 'Back to Search', root_path, class: 'home_link' %>
     </div>
 
   </div>

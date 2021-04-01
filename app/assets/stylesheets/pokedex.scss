@@ -57,6 +57,7 @@ body {
     display: inline-flex;
     padding-left: 10px;
     padding-right: 10px;
+    font-family: 'Quicksand', sans-serif;
 }
 // name of the pokemon
 .poke_name {
@@ -93,8 +94,30 @@ body {
     .poke_category p {
         margin: 0.5em
     }
-    background-color: white;
-    border: 3px solid;
+    .sub_stat {
+        background: linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(90deg, white 50%, transparent 50%), linear-gradient(0deg, white 50%, transparent 50%), linear-gradient(0deg, white 50%, transparent 50%);
+        background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+        background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
+        padding: 10px;
+        animation: border-dance 4s infinite linear;
+    }
+    @keyframes border-dance {
+        0% {
+            background-position: 0 0, 100% 100%, 0 100%, 100% 0;
+        }
+        100% {
+            background-position: 100% 0, 0 100%, 0 0, 100% 100%;
+        }
+    }
+    .home_link {
+        text-decoration: none;
+        color: black;
+    }
+    .index_link {
+        padding: 1em;
+    }
+    background-color: #30a7d7;
+    border: 3px solid white;
     /* this aligned the pokemon name and ID above the image */
     text-align: center;
     /* should center container */
@@ -102,4 +125,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'Quicksand', sans-serif;
+    width: 475px;
 }
