@@ -21,40 +21,34 @@ class PokedexController < ApplicationController
     end
 
     @pokemon_desc = ''
+    @abilities = []
+    @pokemon_name = pokemons.name.capitalize
+    @pokemon_id = pokemons.id
+    @poke_types = []
+    @poke_category = ''
+    link = evo
+    name = link.species.name.capitalize
+    @names = [name]
+    height_arr = height_converter(pokemons.height)
+    @ft = height_arr[0]
+    @inches = height_arr[1]
+    @weight = weight_converter(pokemons.weight)
 
     species.flavor_text_entries.each {|k|
       @pokemon_desc = k.flavor_text if k.language.name == 'en' && k.version.name == 'red'
     }
 
-    @pokemon_name = pokemons.name.capitalize
-    @pokemon_id = pokemons.id
-    
-    height_arr = height_converter(pokemons.height)
-    @ft = height_arr[0]
-    @inches = height_arr[1]
-
-    @abilities = []
-
     pokemons.abilities.each {|k|
       @abilities << k.ability.name.gsub('-',' ').split.map(&:capitalize).join(' ')
     }
-    @weight = weight_converter(pokemons.weight)
-
-    @poke_types = []
 
     pokemons.types.each {|k|
       @poke_types << k.type.name.capitalize
     }
 
-    @poke_category = ''
-
     species.genera.each {|k|
       @poke_category = k.genus if k.language.name == 'en'
     }
-
-    link = evo
-    name = link.species.name.capitalize
-    @names = [name]
 
     while !link.evolves_to.first.nil?
       if link.evolves_to.length > 1

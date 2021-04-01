@@ -1,5 +1,3 @@
-<h2>Welcome to your new Pokedex!</h2>
-
 <div class="error-alert">
       <% if flash[:alert] %>
         <div class="alert-warning"><%= flash[:alert] %></div>
@@ -7,19 +5,22 @@
 </div>
 
 <div class="search-container">
+  <div class='logo-wrapper'>
+    <%= image_tag asset_path('poke_logo.png'), :class => 'poke_logo' %>
+  </div>
+  <h2 class='welcome'>Welcome to your new Pokedex!</h2>
   <div class="row">
-    <div class="col-lg-12 mt-5">
-      <div class="mx-auto mt-5" style="width: 400px">
+    
         <%= form_with(url: search_path, method: 'get', local: true) do %>
           <div class="form-group">
-            <%= label_tag :pokemon, 'Search by name or ID ' %>
+            <%= label_tag :pokemon, 'Search by name or ID ', :class => 'search_label' %>
             <br/>
             <%= text_field_tag :pokemon, nil, placeholder: 'Eg. Squirtle or 7', class: 'form-control' %>
           </div>
 
-          <%= button_tag 'Search', class: 'btn btn-success btn-block' %>
+          <%= button_tag 'Search', class: 'poke_buttons' %>
+          <%= button_to "Random", search_path, method: :get, params: { pokemon: rand(1..898) }, class: 'poke_buttons' %>
         <% end %>
-      </div>
-    </div>
+        
   </div>
 </div>

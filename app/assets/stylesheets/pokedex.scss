@@ -1,4 +1,37 @@
 // container of both pokemon name and ID, set to inline-flex so that they are lined up and so that text-align works
+body {
+    background-color: rgb(233, 64, 64);
+}
+.search-container {
+    .poke_buttons {
+        margin-top: 3px;
+    }
+    .welcome {
+        margin: 5px;
+    }
+    .logo-wrapper {
+        // background-color: transparent;
+        width: auto; 
+    }
+    .poke_logo {
+        width: 80%;
+    }
+    .form-control {
+        margin-top: 3px;
+    }
+    .search_label { 
+        color: black;
+        font-weight: bold;
+    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: 2px solid white;
+    padding: 1em;
+    background-color: #30a7d7
+}
 .name_ID {
     display: inline-flex;
     padding-left: 10px;
@@ -18,7 +51,7 @@
         position: relative;
     }
     .poke_img {
-        width: 50%;
+        width: 200px;
     }
     .poke_four {
         height: 8em;
@@ -39,6 +72,7 @@
     .poke_category p {
         margin: 0.5em
     }
+    background-color: white;
     border: 3px solid;
     /* this aligned the pokemon name and ID above the image */
     text-align: center;
