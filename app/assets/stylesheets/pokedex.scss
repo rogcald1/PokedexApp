@@ -4,7 +4,28 @@ body {
 }
 .search-container {
     .poke_buttons {
-        margin-top: 3px;
+        background-color: #e94040;
+        color: white;
+        cursor: pointer;
+        border: 1px solid white;
+        width: 80px;
+        height: 25px;
+    }
+    #search_button {
+        margin-right: 6px;
+    }
+    .two_buttons {
+        display: inline-flex;
+        margin-top: 5px;
+    }
+    .poke_buttons:hover {
+        font-weight: bold;
+        border: 1.5px solid white;
+    }
+    .form-control {
+        border: 2px solid #e94040;
+        border-radius: 4px;
+        padding: 5px 10px;
     }
     .welcome {
         margin: 5px;
