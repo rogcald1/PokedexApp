@@ -53,73 +53,98 @@ body {
     padding: 1em;
     background-color: #30a7d7
 }
-.name_ID {
-    display: inline-flex;
-    padding-left: 10px;
-    padding-right: 10px;
+.pokedex_results_container {
+    position: absolute;
+    width: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px white solid;
+    padding: 0.5em; 
+    background-color: #30a7d7;
+    height: 275px;
+}
+.left_container {
+    float: left;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .poke_img {
+        width: 170px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .name_ID {
+        display: inline-flex;
+        padding-left: 10px;
+        padding-right: 10px;
+        justify-content: center;
+        font-family: 'Quicksand', sans-serif;
+        height: 50px;
+    }
+    .poke_name {
+        padding-right: 20px;
+    }
+    .poke_id {
+        padding-left: 20px;
+        font-weight: bolder;
+    }
+    .poke_category p {
+        margin: 0.5em
+    }
+    text-align: center;
+    /* should center container */
     font-family: 'Quicksand', sans-serif;
 }
-// name of the pokemon
-.poke_name {
-    padding-right: 20px;
-}
-// id of the pokemon, lined up with name due to name_ID display being 'inline-flex'
-.poke_id {
-    padding-left: 20px;
-    font-weight: bolder;
-}
-// pokedex_results_container is the master container, results_container is smaller and a child of it
-.results_container {
-    .pokedex_results_container {
-        position: relative;
-    }
-    .poke_img {
-        width: 200px;
-    }
+.right_container {
+    float: right;
+    width: 60%;
+    height: 100%;
     .poke_four {
-        height: 8em;
-        position: relative;
+        // position: relative;
         padding: 0 1em 0 1em
     }
     span {
         width: 50%;
         height: 50%;
         float: left;
-        display: flex;
-        align-items: center;
         justify-content: center;
     }
     .poke_description {
-        margin: 0 2em 0 2em;
+        margin: 1em 2em 0 2em;
         padding-top: 1em;
     }
-    .poke_category p {
-        margin: 0.5em
-    }
     .sub_stat {
-        padding: 10px;
+        margin-top: 1em;
+        height: 100%;
     }
     .poke_stats {
         background-color: white;
         font-weight: bold;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
-    .home_link {
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
+    .height {
+        margin-bottom: 1em;
     }
-    .index_link {
-        padding: 1em;
+    .abilities {
+        margin-bottom: 1em;
     }
-    background-color: #30a7d7;
-    border: 3px solid white;
+    .weight {
+        margin-bottom: 1em;
+    }
+    .genus {
+        margin-bottom: 1em;
+    }
+    // background-color: #30a7d7;
     /* this aligned the pokemon name and ID above the image */
-    text-align: center;
+    // text-align: center;
     /* should center container */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-family: 'Quicksand', sans-serif;
-    width: 475px;
 }

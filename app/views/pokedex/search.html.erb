@@ -1,6 +1,5 @@
 <div class='pokedex_results_container'>
-  <div class='results_container'>
-    
+  <div class='left_container'>
     <div class='name_ID'>
       <h3 class='poke_name'><%= @pokemon_name %></h3>
       <h3 class='poke_divider'> || </h3>
@@ -11,18 +10,23 @@
       <%= image_tag("sprites/official-artwork/#{@pokemon_id}.png", :class => "poke_img") %>
     </div>
 
+    <div class='poke_category'>
+          <p> Category:
+          <br>
+          <%= @poke_category %>
+          </p>
+    </div>    
+  </div>
+
+  <div class='right_container'>
+    
     <div class='poke_stats'>
       <div class='poke_description'>
         <%= @pokemon_desc %>
       </div>
 
       <div class='sub_stat'>
-        <div class='poke_category'>
-          <p> Category:
-          <br>
-          <%= @poke_category %>
-          </p>
-        </div>
+    
 
         <div class='poke_four'>
           <span class='height'> Height:
@@ -50,10 +54,6 @@
           </p>
         </div>
       </div>
-    </div>
-
-    <div class='index_link'>
-      <%= link_to 'Back to Search', root_path, class: 'home_link' %>
     </div>
 
   </div>
