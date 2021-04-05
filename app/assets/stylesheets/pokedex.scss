@@ -93,7 +93,8 @@ body {
         font-weight: bolder;
     }
     .poke_category p {
-        margin: 0.5em
+        margin: 0.5em;
+        font-weight: bold;
     }
     text-align: center;
     /* should center container */
@@ -114,8 +115,7 @@ body {
         justify-content: center;
     }
     .poke_description {
-        margin: 1em 2em 0 2em;
-        padding-top: 1em;
+        margin: 1.5em 2em 0 2em;
     }
     .sub_stat {
         margin-top: 1em;
@@ -140,6 +140,9 @@ body {
         margin-bottom: 1em;
     }
     .genus {
+        margin-bottom: 1em;
+    }
+    .evo_chain {
         margin-bottom: 1em;
     }
     // background-color: #30a7d7;
