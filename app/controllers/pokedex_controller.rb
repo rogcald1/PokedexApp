@@ -5,6 +5,7 @@ class PokedexController < ApplicationController
   end
 
   def search
+    ##checks for empty values
     if params[:pokemon] == ''
       flash[:alert] = "please input a pokemon's name or ID"
       return render action: :index
@@ -38,7 +39,7 @@ class PokedexController < ApplicationController
     @weight = weight_converter(pokemons.weight)
 
     species.flavor_text_entries.each {|k|
-      @pokemon_desc = k.flavor_text if k.language.name == 'en' && k.version.name == 'red'
+      @pokemon_desc = k.flavor_text if k.language.name == 'en' && k.version.name == 'diamond'
     }
 
     pokemons.abilities.each {|k|
