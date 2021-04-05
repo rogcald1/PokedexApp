@@ -66,6 +66,7 @@ body {
 // id of the pokemon, lined up with name due to name_ID display being 'inline-flex'
 .poke_id {
     padding-left: 20px;
+    font-weight: bolder;
 }
 // pokedex_results_container is the master container, results_container is smaller and a child of it
 .results_container {
@@ -100,10 +101,12 @@ body {
     }
     .poke_stats {
         background-color: white;
+        font-weight: bold;
     }
     .home_link {
         text-decoration: none;
         color: black;
+        font-weight: bold;
     }
     .index_link {
         padding: 1em;
