@@ -71,8 +71,10 @@
             <br/>
 
             <div class="error-alert">
-                <% if flash[:alert] %>
-                  <div class="alert-warning"><%= flash[:alert] %></div>
+                <% if @alert1_on %>
+                  <div class="alert-warning">please input a pokemon's name or ID</div>
+                <% elsif @alert2_on %>
+                  <div class="alert-warning">pokemon not found :/</div>
                 <% end %>
             </div>
 
@@ -81,7 +83,7 @@
 
           
         <div class='two_buttons_two'> 
-        <%= button_tag 'Search', class: 'poke_buttons_two', id: 'search_button_two' %>  
+        <%= button_tag 'Search', class: 'poke_buttons_two', id: 'search_button_two', name: "current_poke", value: "#{@pokemon_id}" %>  
         <% end %>
         <%= button_to "Random", search_path, method: :get, params: { pokemon: rand(1..898) }, class: 'poke_buttons_two' %>
         </div>

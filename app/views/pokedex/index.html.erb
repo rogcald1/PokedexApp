@@ -21,7 +21,7 @@
 
           
         <div class='two_buttons'> 
-        <%= button_tag 'Search', class: 'poke_buttons', id: 'search_button' %>  
+        <%= button_tag 'Search', class: 'poke_buttons', id: 'search_button', name: "index_source", value: true %>  
         <% end %>
         <%= button_to "Random", search_path, method: :get, params: { pokemon: rand(1..898) }, class: 'poke_buttons' %>
         </div>

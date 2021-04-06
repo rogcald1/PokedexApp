@@ -5,17 +5,34 @@ class PokedexController < ApplicationController
   end
 
   def search
-    ##checks for empty values
+    @pokepoke = params[:current_poke]
+    if params[:empty_val]
+      @alert1_on = true
+    end
+
+    if params[:incorrect]
+      @alert2_on = true
+    end
+
+    ##checks for empty values and redirects depending on what page they searched from 
     if params[:pokemon] == ''
       flash[:alert] = "please input a pokemon's name or ID"
-      return render action: :index
+      if params[:index_source]
+        return render action: :index
+      elsif !params[:index_source] && params[:pokemon] == ''
+        return redirect_to :action => "search", :pokemon => @pokepoke, :empty_val => true
+      end
     end
     ##initial test for errors, since PokeApi automatically converts info into JSON
     test_res = Excon.get("https://pokeapi.co/api/v2/pokemon/#{params[:pokemon].downcase}")
 
     if test_res.data[:body] == 'Not Found'
       flash[:alert] = "pokemon not found :/"
-      return render action: :index
+      if params[:index_source]
+        return render action: :index
+      elsif !params[:index_source] && test_res.data[:body] == 'Not Found'
+        return redirect_to :action => "search", :pokemon => @pokepoke, :incorrect => true
+      end
     else
     ##if initial test passes, then use PokeApi and grab info
       flash[:alert] = ""
@@ -39,7 +56,7 @@ class PokedexController < ApplicationController
     @weight = weight_converter(pokemons.weight)
 
     species.flavor_text_entries.each {|k|
-      @pokemon_desc = k.flavor_text if k.language.name == 'en' && k.version.name == 'diamond'
+      @pokemon_desc = k.flavor_text if k.language.name == 'en'
     }
 
     pokemons.abilities.each {|k|
