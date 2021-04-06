@@ -18,10 +18,10 @@ class PokedexController < ApplicationController
       return render action: :index
     else
     ##if initial test passes, then use PokeApi and grab info
+      flash[:alert] = ""
       pokemons = find_pokemon(params[:pokemon].downcase) 
       species = pokemons.species.get
       evo = species.evolution_chain.get.chain 
-
     end
 
     @pokemon_desc = ''

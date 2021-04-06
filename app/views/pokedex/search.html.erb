@@ -1,60 +1,94 @@
-<div class='pokedex_results_container'>
-  <div class='left_container'>
-    <div class='name_ID'>
-      <h3 class='poke_name'><%= @pokemon_name %></h3>
-      <h3 class='poke_divider'> || </h3>
-      <h3 class='poke_id'>Entry ID #<%= @pokemon_id %></h3>
-    </div>
+<div class='full_container'>
 
-    <div class='photo_screen'>
-      <%= image_tag("sprites/official-artwork/#{@pokemon_id}.png", :class => "poke_img") %>
-    </div>
-
-    <div class='poke_category'>
-          <p> Category:
-          <br>
-          <%= @poke_category %>
-          </p>
-    </div>    
-  </div>
-
-  <div class='right_container'>
-    
-    <div class='poke_stats'>
-      <div class='poke_description'>
-        <%= @pokemon_desc %>
+  <div class='pokedex_results_container'>
+    <div class='left_container'>
+      <div class='name_ID'>
+        <h3 class='poke_name'><%= @pokemon_name %></h3>
+        <h3 class='poke_divider'> || </h3>
+        <h3 class='poke_id'>Entry ID #<%= @pokemon_id %></h3>
       </div>
 
-      <div class='sub_stat'>
-    
-
-        <div class='poke_four'>
-          <span class='height'> Height:
-          <br/> 
-          <%= @ft %>' <%= @inches %>''
-          </span>
-          <span class='abilities'> Abilities:
-          <br/> 
-          <%= @abilities.join(', ') %>
-          </span>
-          <span class='weight'> Weight:
-          <br/> 
-          <%= @weight %> lbs
-          </span>
-          <span class='genus'> Type:
-          <br/> 
-          <%= @poke_types.join(', ') %>
-          </span>
-        </div>
-
-        <div class='evo_chain'>
-          <p> Evolutions:
-          <br>
-          <%= @names.join(', ') %>
-          </p>
-        </div>
+      <div class='photo_screen'>
+        <%= image_tag("sprites/official-artwork/#{@pokemon_id}.png", :class => "poke_img") %>
       </div>
+
+      <div class='poke_category'>
+            <p> Category:
+            <br>
+            <%= @poke_category %>
+            </p>
+      </div>    
     </div>
 
+    <div class='right_container'>
+      
+      <div class='poke_stats'>
+        <div class='poke_description'>
+          <%= @pokemon_desc %>
+        </div>
+
+        <div class='sub_stat'>
+      
+
+          <div class='poke_four'>
+            <span class='height'> Height:
+            <br/> 
+            <%= @ft %>' <%= @inches %>''
+            </span>
+            <span class='abilities'> Abilities:
+            <br/> 
+            <%= @abilities.join(', ') %>
+            </span>
+            <span class='weight'> Weight:
+            <br/> 
+            <%= @weight %> lbs
+            </span>
+            <span class='genus'> Type:
+            <br/> 
+            <%= @poke_types.join(', ') %>
+            </span>
+          </div>
+
+          <div class='evo_chain'>
+            <p> Evolutions:
+            <br>
+            <%= @names.join(', ') %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <div class="search-container-two">
+    <h3 class='welcome-two'>Search for a new Pokemon!</h2>
+    <div class="row-two">
+    
+        <%= form_with(url: search_path, method: 'get', local: true, id: 'poke_form') do %>
+          <div class="form-group">
+            <%= label_tag :pokemon, 'Search by name or ID ', :class => 'search_label_two' %>
+            <br/>
+
+            <div class="error-alert">
+                <% if flash[:alert] %>
+                  <div class="alert-warning"><%= flash[:alert] %></div>
+                <% end %>
+            </div>
+
+            <%= text_field_tag :pokemon, nil, placeholder: 'Eg. Squirtle or 7', class: 'form-control-two', id: 'poke_input' %>
+          </div>
+
+          
+        <div class='two_buttons_two'> 
+        <%= button_tag 'Search', class: 'poke_buttons_two', id: 'search_button_two' %>  
+        <% end %>
+        <%= button_to "Random", search_path, method: :get, params: { pokemon: rand(1..898) }, class: 'poke_buttons_two' %>
+        </div>
+        
+        
+    </div>
+  </div>
+
+  
 </div>
