@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootstrap'
 gem 'excon'
 gem 'poke-api-v2'
+gem 'rest-client'
 
 
 # Use Active Storage variant

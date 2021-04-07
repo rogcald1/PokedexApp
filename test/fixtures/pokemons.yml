@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  name: MyString
+  category: MyString
+  description: MyString
+  types: MyString
+  evolution: MyString
+  height: MyString
+  weight: MyString
+  abilities: MyString
+
+two:
+  id: MyString
+  name: MyString
+  category: MyString
+  description: MyString
+  types: MyString
+  evolution: MyString
+  height: MyString
+  weight: MyString
+  abilities: MyString
