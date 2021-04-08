@@ -5,6 +5,7 @@ class PokedexController < ApplicationController
   end
 
   def search
+    #this adjusts messaging if there was an invalid entry or blank entry
     @pokepoke = params[:current_poke]
     if params[:empty_val]
       @alert1_on = true
@@ -24,83 +25,34 @@ class PokedexController < ApplicationController
       end
     end
     ##initial test for errors, since PokeApi automatically converts info into JSON
-    test_res = Excon.get("https://pokeapi.co/api/v2/pokemon/#{params[:pokemon].downcase}")
+    # test_res = Excon.get("https://pokeapi.co/api/v2/pokemon/#{params[:pokemon].downcase}")
 
-    if test_res.data[:body] == 'Not Found'
+    if !Pokemon.exists?(params[:pokemon]) && !Pokemon.exists?(name: "#{params[:pokemon].capitalize}")
       flash[:alert] = "pokemon not found :/"
       if params[:index_source]
         return render action: :index
-      elsif !params[:index_source] && test_res.data[:body] == 'Not Found'
+      elsif !params[:index_source] && (!Pokemon.exists?(params[:pokemon]) && !Pokemon.exists?(name: "#{params[:pokemon].capitalize}"))
         return redirect_to :action => "search", :pokemon => @pokepoke, :incorrect => true
       end
     else
     ##if initial test passes, then use PokeApi and grab info
-      flash[:alert] = ""
-      pokemons = find_pokemon(params[:pokemon].downcase) 
-      species = pokemons.species.get
-      evo = species.evolution_chain.get.chain 
-    end
-
-    @pokemon_desc = ''
-    @abilities = []
-    @pokemon_name = pokemons.name.capitalize
-    @pokemon_id = pokemons.id
-    @poke_types = []
-    @poke_category = ''
-    link = evo
-    name = link.species.name.capitalize
-    @names = [name]
-    height_arr = height_converter(pokemons.height)
-    @ft = height_arr[0]
-    @inches = height_arr[1]
-    @weight = weight_converter(pokemons.weight)
-
-    species.flavor_text_entries.each {|k|
-      @pokemon_desc = k.flavor_text if k.language.name == 'en'
-    }
-
-    pokemons.abilities.each {|k|
-      @abilities << k.ability.name.gsub('-',' ').split.map(&:capitalize).join(' ')
-    }
-
-    pokemons.types.each {|k|
-      @poke_types << k.type.name.capitalize
-    }
-
-    species.genera.each {|k|
-      @poke_category = k.genus if k.language.name == 'en'
-    }
-
-    while !link.evolves_to.first.nil?
-      if link.evolves_to.length > 1
-        link.evolves_to.each {|k|
-          @names << k.species.name.capitalize
-        }
-        link = link.evolves_to.first
-      else
-        link = link.evolves_to.first
-        name = link.species.name.capitalize
-        @names << name
+      flash[:alert] = ""  
+      if Pokemon.exists?(params[:pokemon])
+        pokemons = Pokemon.where(id: params[:pokemon])
+      elsif Pokemon.exists?(name: "#{params[:pokemon].capitalize}")
+        pokemons = Pokemon.where(name: "#{params[:pokemon].capitalize}")
       end
     end
 
-  end
+    @pokemon_name = pokemons.first.name
+    @pokemon_id = pokemons.first.poke_id
+    @pokemon_desc = pokemons.first.description
+    @poke_category = pokemons.first.category
+    @poke_height = pokemons.first.height
+    @weight = pokemons.first.weight
+    @poke_types = pokemons.first.types
+    @abilities = pokemons.first.abilities
+    @names = pokemons.first.evolution
 
-  def find_pokemon(pokemon_choice)
-    response = PokeApi.get(pokemon: "#{pokemon_choice}")
-  end
-
-  def height_converter(height)
-    final = []
-    first_conv = (height*3.94)/12
-    second_conv = first_conv.to_s.split('.')
-    final << second_conv[0]
-    final << second_conv[1][0..1]
-    final
-  end
-
-  def weight_converter(weight)
-    final = (weight / 4.536).round(1)
-    final
   end
 end
