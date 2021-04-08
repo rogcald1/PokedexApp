@@ -14,7 +14,7 @@ def weight_converter(weight)
 	final
 end
 
-for x in (776..898)
+for x in (1..775)
 	puts x
   res = PokeApi.get(pokemon: "#{x}")	
   species = res.species.get
