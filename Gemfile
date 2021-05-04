@@ -24,6 +24,7 @@ gem 'bootstrap'
 gem 'excon'
 gem 'poke-api-v2'
 gem 'rest-client'
+gem 'rails-autocomplete'
 
 
 # Use Active Storage variant

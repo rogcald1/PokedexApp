@@ -1,6 +1,7 @@
 require 'poke-api-v2'
 
 class PokedexController < ApplicationController
+
   def index
   end
 
@@ -24,8 +25,6 @@ class PokedexController < ApplicationController
         return redirect_to :action => "search", :pokemon => @pokepoke, :empty_val => true
       end
     end
-    ##initial test for errors, since PokeApi automatically converts info into JSON
-    # test_res = Excon.get("https://pokeapi.co/api/v2/pokemon/#{params[:pokemon].downcase}")
 
     if !Pokemon.exists?(params[:pokemon]) && !Pokemon.exists?(name: "#{params[:pokemon].capitalize}")
       flash[:alert] = "pokemon not found :/"
@@ -55,4 +54,5 @@ class PokedexController < ApplicationController
     @names = pokemons.first.evolution
 
   end
+
 end
