@@ -64,11 +64,6 @@ body {
     background-color: #30a7d7;
     height: 275px;
 }
-@media screen and (max-width: 730px) {
-    .pokedex_results_container {
-        width: 400px;
-    }
-}
 .left_container {
     float: left;
     width: 40%;
@@ -190,4 +185,25 @@ body {
     margin-top: 2em;
     border: 2px solid white;
     background-color: #30a7d7;
+}
+@media screen and (max-width: 730px) {
+    .pokedex_results_container {
+        width: 400px;
+        font-size: small;
+    }
+    .left_container {    
+        .poke_img {
+            width: 150px;
+        }
+        .poke_name {
+            padding-right: 2px;
+        }
+        .poke_id {
+            padding-left: 2px;
+        }
+        .name_ID {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
 }
