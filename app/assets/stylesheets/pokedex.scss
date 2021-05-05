@@ -58,15 +58,16 @@ body {
     background-color: #30a7d7
 }
 .pokedex_results_container {
-    // position: absolute;
     width: 700px;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     border: 2px white solid;
     padding: 0.5em; 
     background-color: #30a7d7;
     height: 275px;
+}
+@media screen and (max-width: 730px) {
+    .pokedex_results_container {
+        width: 400px;
+    }
 }
 .left_container {
     float: left;
@@ -149,10 +150,6 @@ body {
     .evo_chain {
         margin-bottom: 1em;
     }
-    // background-color: #30a7d7;
-    /* this aligned the pokemon name and ID above the image */
-    // text-align: center;
-    /* should center container */
     font-family: 'Quicksand', sans-serif;
 }
 .search-container-two {
